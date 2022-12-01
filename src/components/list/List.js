@@ -1,39 +1,37 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 
-function List() {
+function List({ applyList, setApplyList }) {
+
+
+
+    //get local storage run 
+    useEffect(() => {
+        getMovies();
+    }, [])
+
+    const getMovies = () => {
+        let movies = JSON.parse(localStorage.getItem("movie"));
+        setApplyList(movies);
+    }
+
     return (
         <>
-            <article className="movie-card">
-                <h3 className="movie-title">Making a movie website</h3>
-                <p className="desc">By Eder</p>
 
-                <button className="edit">Edit</button>
-                <button className="delete">Delete</button>
-            </article>
+            {applyList != null ?
+                applyList.map(movie => {
 
-            <article className="movie-card">
-                <h3 className="movie-title">Making a movie website</h3>
-                <p className="desc">By Eder</p>
+                    return (
+                        <article key={movie.id} className="movie-card">
+                            <h3 className="movie-title">{movie.title}</h3>
+                            <p className="desc">{movie.description}</p>
 
-                <button className="edit">Edit</button>
-                <button className="delete">Delete</button>
-            </article>
-
-            <article className="movie-card">
-                <h3 className="movie-title">Making a movie website</h3>
-                <p className="desc">By Eder</p>
-
-                <button className="edit">Edit</button>
-                <button className="delete">Delete</button>
-            </article>
-
-            <article className="movie-card">
-                <h3 className="movie-title">Making a movie website</h3>
-                <p className="desc">By Eder</p>
-
-                <button className="edit">Edit</button>
-                <button className="delete">Delete</button>
-            </article>
+                            <button className="edit">Edit</button>
+                            <button className="delete">Delete</button>
+                        </article>
+                    );
+                })
+                : <div style={{ width: '100%' }}><h3 style={{ textAling: 'center' }}>ADD SOME MOVIE</h3></div>
+            }
         </>
     )
 }

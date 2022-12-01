@@ -1,6 +1,6 @@
 import React from 'react'
 
-function Seeker() {
+function SearchEngine() {
     return (
         <div className="search">
             <h3 className="movie-title">Discover</h3>
@@ -12,4 +12,4 @@ function Seeker() {
     )
 }
 
-export default Seeker
+export default SearchEngine

@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
+import { helperStorage } from '../../helpers/helperStorage';
 
-function Create() {
+function Create({ setApplyList }) {
 
     const title = "Add Movie";
 
@@ -25,34 +26,24 @@ function Create() {
         //saving movie added
         setMovie(movieAdded);
 
+        //refresh list in view
+        setApplyList(elements => { 
+            if(!elements){
+                return [movieAdded]
+            }else{
+                return [movieAdded, ...elements];
+            }
+            
+        });
+        
         //local storage
-        localStorageSave(movieAdded); 
+        helperStorage("movie", movieAdded);
+
+
     }
 
 
-    //local storage
-    const localStorageSave = (movieAdded) => { 
 
-        //get elements
-
-        let getElements = JSON.parse(localStorage.getItem("movies"));
-        //check array
-
-        if(Array.isArray(getElements)){
-            //add element
-            getElements.push(movieAdded);
-        }else{
-            //replace elements + create array
-            getElements = [movieAdded]; 
-        };
-
-        //save in lS
-        localStorage.setItem('movies', JSON.stringify(getElements))
-
-        //return movie
-
-        return movieAdded; 
-    };
 
 
 

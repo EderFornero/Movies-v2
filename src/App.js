@@ -1,11 +1,17 @@
 import './css/style.css';
+import { useState } from 'react';
 
 //components
 import List from './components/list/List';
-import Seeker from './components/seeker/Seeker';
+import SearchEngine from './components/search/SearchEngine';
 import Create from './components/create/Create';
 
+
 function App() {
+
+  const [applyList, setApplyList] = useState([]);
+
+
   return (
     <div className="layout">
 
@@ -31,7 +37,7 @@ function App() {
 
       <section className="content">
         {/*movies here*/}
-        <List />
+        <List applyList={applyList} setApplyList={setApplyList} />
       </section>
 
 
@@ -39,8 +45,8 @@ function App() {
 
       {/*Aside*/}
       <aside className="aside">
-        <Seeker />
-        <Create />
+        <SearchEngine />
+        <Create setApplyList={setApplyList} />
       </aside>
 
       {/*Aside />*/}
