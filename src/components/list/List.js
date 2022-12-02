@@ -1,7 +1,12 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
+
+//components
+import EditForm from '../editForm/EditForm';
 
 function List({ applyList, setApplyList }) {
 
+    //edit button state
+    const [editButton, setEditButton] = useState(0);
 
 
     //get local storage run 
@@ -12,7 +17,22 @@ function List({ applyList, setApplyList }) {
     const getMovies = () => {
         let movies = JSON.parse(localStorage.getItem("movie"));
         setApplyList(movies);
+        return movies;
     }
+
+    //delete function
+    const movieDeleted = (id) => {
+        //get movies
+        let getMoviesDeleted = getMovies();
+        //filter movies
+        let newMoviesArray = getMoviesDeleted.filter(movie => movie.id !== parseInt(id));
+        //refresh state 
+        setApplyList(newMoviesArray);
+        //refresh localStorage
+        localStorage.setItem('movie', JSON.stringify(newMoviesArray));
+    }
+
+
 
     return (
         <>
@@ -25,8 +45,15 @@ function List({ applyList, setApplyList }) {
                             <h3 className="movie-title">{movie.title}</h3>
                             <p className="desc">{movie.description}</p>
 
-                            <button className="edit">Edit</button>
-                            <button className="delete">Delete</button>
+                            <button className="edit" onClick={() => { setEditButton(movie.id) }}>Edit</button>
+
+                            <button className="delete" onClick={() => movieDeleted(movie.id)}>Delete</button>
+                            {/*spawn form edit*/}
+                            {editButton === movie.id && (<EditForm movie={movie}
+                                                                   getMovies={getMovies} 
+                                                        />)}
+
+
                         </article>
                     );
                 })

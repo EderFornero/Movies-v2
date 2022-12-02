@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { helperStorage } from '../../helpers/helperStorage';
+import '../../css/style.css'
 
 function Create({ setApplyList }) {
 
@@ -64,6 +65,7 @@ function Create({ setApplyList }) {
                     name="description" />
                 <input
                     id="save"
+                    className='edit-submit'
                     type="submit"
                     value="Add" />
             </form>
