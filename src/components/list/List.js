@@ -51,6 +51,8 @@ function List({ applyList, setApplyList }) {
                             {/*spawn form edit*/}
                             {editButton === movie.id && (<EditForm movie={movie}
                                                                    getMovies={getMovies} 
+                                                                   setEditButton={setEditButton}
+                                                                   setApplyList={setApplyList}
                                                         />)}
 
 

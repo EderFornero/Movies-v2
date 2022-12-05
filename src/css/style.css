@@ -225,6 +225,9 @@ button, inpunt[type="button"], inpunt[type="submit"]{
     border-color: transparent;
 }
 
+.not-found{ 
+    color: red;
+}
 
 /* aside />*/
 

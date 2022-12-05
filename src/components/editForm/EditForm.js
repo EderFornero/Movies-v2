@@ -2,29 +2,34 @@ import React from 'react';
 import '../../css/style.css';
 
 
-function editForm({ movie, getMovies }) {
+function editForm({ movie, getMovies, setApplyList, setEditButton }) {
 
     const handleOnSubmit = (e, id) => {
-        e.preventDefault(); 
+        e.preventDefault();
 
-        let target = e.target; 
+        let target = e.target;
 
         //get movies
         const existingMovies = getMovies();
         //get id for replace
         const movieIndex = existingMovies.findIndex(movie => movie.id === id);
         //create object
-        let movieUpdate = { 
+        let movieUpdate = {
             id,
             title: target.title.value,
-            description: target.description.value, 
+            description: target.description.value,
         }
-        
+
         //refresh element
-        existingMovies[movieIndex] = movieUpdate; 
-        
+        existingMovies[movieIndex] = movieUpdate;
+
         //save new object in localStorage
-    }   
+        localStorage.setItem('movie', JSON.stringify(existingMovies));
+
+        //refresh status
+        setApplyList(existingMovies);
+        setEditButton(0);
+    }
 
 
     const editTitle = "Edit Movie";

@@ -45,7 +45,7 @@ function App() {
 
       {/*Aside*/}
       <aside className="aside">
-        <SearchEngine />
+        <SearchEngine applyList={applyList} setApplyList={setApplyList}/>
         <Create setApplyList={setApplyList} />
       </aside>
 
