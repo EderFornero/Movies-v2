@@ -1,5 +1,8 @@
 import './css/style.css';
-import { useState } from 'react';
+import React, { useState } from 'react';
+
+//router
+import ReactRouter from './components/router/ReactRouter';
 
 //components
 import List from './components/list/List';
@@ -13,6 +16,8 @@ function App() {
 
 
   return (
+    <>
+    <ReactRouter />
     <div className="layout">
 
       <header className="header">
@@ -26,12 +31,12 @@ function App() {
       </header>
 
       <nav className="navbar">
-        <ul>
-          <li><a href="/">Home</a></li>
-          <li><a href="/">Movies</a></li>
-          <li><a href="/">Blog</a></li>
-          <li><a href="/">Contact</a></li>
-        </ul>
+              <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/">Movies</a></li>
+                <li><a href="/">Blog</a></li>
+                <li><a href="/">Contact</a></li>
+              </ul>     
       </nav>
 
 
@@ -45,7 +50,7 @@ function App() {
 
       {/*Aside*/}
       <aside className="aside">
-        <SearchEngine applyList={applyList} setApplyList={setApplyList}/>
+        <SearchEngine applyList={applyList} setApplyList={setApplyList} />
         <Create setApplyList={setApplyList} />
       </aside>
 
@@ -59,7 +64,7 @@ function App() {
       </footer>
 
     </div>
-
+    </>
   );
 }
 
