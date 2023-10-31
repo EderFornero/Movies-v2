@@ -59,7 +59,7 @@ function App() {
 
 
       <footer className="footer">
-        &copy; Master in JavaScript E12 and React - <a href="https://portfolio-eder-gamma.vercel.app"
+        &copy; Master in JavaScript E12 and React - <a href="https://portfolio-ederfornero.vercel.app/"
           target="_blank" rel='noreferrer'>Eder's Portfolio</a>
       </footer>
 
